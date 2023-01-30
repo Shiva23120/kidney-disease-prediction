@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width= device-width,initial-scale=1,shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/ootstrap.min.css">
+<!--<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">-->
+     <style>
+      div {
+        margin-bottom: 2px;
+      }
+      label {
+        display: inline-block;
+        width: 170px;
+        text-align: right;
+      }
+	 select { width: 150px; text-align: center; }
+	select .opt { text-align: center;}
+	h1{
+	color:green;
+	}
+    </style>
+</head>
+
+<body> 
+<center>
+ <div class="login">
+  
+	<pre><h1>     𝐏 𝐑 𝐄 𝐃 𝐈 𝐂 𝐓  </h1></pre>
+	</br> 
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="/predict" method="post">
+		
+       <div class="inputfield">
+          <label>Age</label>
+          <input type="number" placeholder="Enter your age" style="width: 150px;" min="1" max="100" class="input" name="age" >
+       </div>     </br>
+	        
+        <div class="inputfield">
+          <label>Blood pressure</label>
+          <input type="number"placeholder="Enter Blood pressure" style="width: 150px;" min="0" step="10" class="input" name="bp">
+       </div>   </br>
+	   <div class="inputfield">
+          <label>Specific gravity</label>
+          <input type="number"placeholder="Enter Specific gravity" style="width: 150px;" min="0" step=".1" max="1"class="input" name="sg">
+       </div>   </br>
+	   <div class="inputfield">
+          <label>Albumin</label>
+          <input type="number"placeholder="Enter Albumin" style="width: 150px;" min="0"  max="5" class="input" name="al">
+       </div>   </br>
+	   <div class="inputfield">
+          <label>Sugar</label>
+          <input type="number"placeholder="Enter your age" style="width: 150px;" min="0" max="5" class="input" name="su">
+       </div>   </br>
+	   	   <div class="inputfield">
+          <label>Blood glucose random</label>
+          <input type="number" placeholder="Enter Sugar" style="width: 150px;" class="input" name="bgr">
+       </div>   </br>
+	   	   <div class="inputfield">
+          <label>Blood urea</label>
+          <input type="number" placeholder="Enter Blood urea" style="width: 150px;" class="input" name="bu">
+       </div>   </br>
+	   <div class="inputfield">
+          <label>Serum creatinine</label>
+          <input type="number" placeholder="Enter Serumcreatinine" style="width: 150px;" min="0" step=".1"  class="input" name="sc">
+       </div>   </br>
+	   <div class="inputfield">
+          <label>Sodium</label>
+          <input type="number" placeholder="Enter Sodium" style="width: 150px;" min="0" step=".1"  class="input" name="sod">
+       </div>   </br>  
+	   <div class="inputfield">
+          <label>Potassium</label>
+          <input type="number" placeholder="Enter Potassium" style="width: 150px;" min="0" step=".1"  class="input" name="pot">
+       </div>   </br>
+	   <div class="inputfield">
+          <label>Hemoglobin</label>
+          <input type="number" placeholder="Enter Hemoglobin" style="width: 150px;" min="0" step=".1"  class="input" name="hemo">
+       </div>   </br>  
+	  <div class="inputfield">
+          <label>Packed cell volume</label>
+          <input type="number" placeholder="Enter Packed cell volume" style="width: 150px;" min="0"  max="60" class="input" name="pcv">
+       </div>   </br>
+	   	   <div class="inputfield">
+          <label>White Blood cells count</label>
+          <input type="number"placeholder="Enter White Blood cells count" style="width: 150px;"  min="0"  class="input" name="wc">
+       </div>   </br>
+	   	   <div class="inputfield">
+          <label>Red cells</label>
+          <input type="number"placeholder="Enter Red cells" style="width: 150px;"  min="0" step="0.1" class="input" name="rc">
+       </div>   </br>
+	   <div class="inputfield">
+	   <label >Red Blood Cells</label>
+	   <select name="rbc_normal">
+	    <option value="" disabled selected>Select </option>
+          <option class="opt"value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+        </select>
+	   </div>   </br>
+
+	   <div class="inputfield">
+	   <label >Pus cells</label>
+	   <select name="pc_normal">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+	   <div class="inputfield">
+	   <label >Pus cell clumps</label>
+	   <select name="pcc_present">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+	   <div class="inputfield">
+	   <label >Bacteria</label>
+	   <select name="ba_present">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+	   <div class="inputfield">
+	   <label >Hypertension</label>
+	   <select name="htn_yes">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+	   <div class="inputfield">
+	   <label >Diabetes</label>
+	   <select name="dm_yes">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+	   <div class="inputfield">
+	   <label >Coronary artery disease</label>
+	   <select name="cad_yes">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+	   <div class="inputfield">
+	   <label >Appetite</label>
+	   <select name="appet_poor">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+
+	   <div class="inputfield">
+	   <label >Pedal edema</label>
+	   <select name="pe_yes">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1"> yes </option>
+		  <option class="opt" value="0"> No   </option>
+       </select>
+	   </div>   </br>
+	   <div class="inputfield">
+	   <label >Anemia</label>
+	   <select name="ane_yes">
+	   <option value="" disabled selected>Select </option>
+          <option class="opt" value="1">  yes </option>
+		  <option class="opt" value="0">  No   </option>
+       </select>
+	   </div>   </br>
+        <button class='btn btn-primary'>Predict</button><br/>
+
+    </form>
+
+    </div>
+
+   <br/>
+   <br/>
+   <div>
+
+   <h3 style="color: green"> {{ prediction }} </h3>
+
+   </div>
+   <br/>
+   <br/>   
+   <br/>
+</center>
+<footer class="footer">
+   <div class="container-fluid">
+       <div class="row">
+           <div class="col-12">
+         <center>
+                  <p> made with ❤️ by Shiva-Abhi</p>
+         </center>   
+           </div>
+       </div>
+   </div>
+</footer>
+</body>
+</html>
